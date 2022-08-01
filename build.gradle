@@ -14,6 +14,7 @@ repositories {
 
 ext {
     set('springCloudVersion', "2021.0.3")
+    set('testContainersVersion', "1.17.2")
 }
 
 dependencies {
@@ -21,11 +22,14 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-circuitbreaker-reactor-resilience4j'
     implementation 'org.springframework.boot:spring-boot-starter-data-redis-reactive'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.session:spring-session-data-redis'
+    testImplementation 'org.testcontainers:junit-jupiter'
 }
 
 dependencyManagement {
     imports {
         mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        mavenBom "org.testcontainers:testcontainers-bom:${testContainersVersion}"
     }
 }
 
